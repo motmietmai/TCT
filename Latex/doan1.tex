@@ -1,0 +1,137 @@
+\documentclass[12pt]{extreport}
+\usepackage[utf8]{vietnam}
+\usepackage[left=3.50cm, right=2.00cm, top=3.50cm, bottom=3.00cm]{geometry}
+\usepackage{fancybox,graphicx}
+\usepackage{mathrsfs} 
+\usepackage{amsfonts}
+\usepackage{longtable,array}
+\usepackage{multirow}
+\newlength\mylength
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage[intlimits]{amsmath}
+\usepackage{array}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\makeatletter
+\renewcommand{\ALG@name}{Thuật toán}
+\makeatother
+\usepackage{algpseudocode}
+\usepackage{amsxtra,amssymb,latexsym,amscd,amsthm}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{positioning,automata}
+\newtheorem{theorem}{Định lý}[chapter]
+\newtheorem{definition}{Định nghĩa}[chapter]
+\newtheorem{example}{Ví dụ}[chapter]
+\newtheorem{lemma}[theorem]{Bổ đề}
+%Tiêu đề
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{BÁO CÁO OTOMAT VÀ NGÔN NGỮ HÌNH THỨC}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{mGreen}{rgb}{0,0.6,0}
+\definecolor{mGray}{rgb}{0.5,0.5,0.5}
+\definecolor{mPurple}{rgb}{0.58,0,0.82}
+\definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{CStyle}{
+	backgroundcolor=\color{backgroundColour},   
+	commentstyle=\color{mGreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{mGray},
+	stringstyle=\color{mPurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+	language=C
+}
+
+\begin{document}
+
+\thispagestyle{empty}
+\thisfancypage{
+	\setlength{\fboxsep}{0pt}
+	\fbox}{}
+
+\begin{center}
+	
+	{\fontsize{13pt}{1}\selectfont\textbf{TRƯỜNG ĐẠI HỌC BÁCH KHOA HÀ NỘI}}
+	\\
+	{\fontsize{13pt}{1}\selectfont\textbf{VIỆN TOÁN ỨNG DỤNG VÀ TIN HỌC}}
+	\\		
+	\textbf{--------------------  o0o  ---------------------}\\[1cm]
+	\includegraphics[scale=0.2]{logo} \\[1.2cm]
+	\textbf{{\large ĐỒ ÁN I}}
+\textbf{}\\[1cm]
+\textbf{{\large BÀI TOÁN NHẬN DIỆN KHUÔN MẶT}}\\[0.2cm]
+\end{center}
+\begin{flushleft}
+\hspace{1.5 cm} \textbf{ Giáo viên hướng dẫn:\hspace{0.2cm}{ Ts. TRẦN NGỌC THĂNG }}\\[0.2cm]
+\hspace{1.5 cm} \textbf{ Sinh viên thực hiện\hspace{0.3cm}:\hspace{0.2cm}{ TRỊNH HOÀNG ĐỨC\\
+\hspace{6.6 cm}PHẠM NGỌC QUANG ANH\\
+\hspace{6.6 cm}ĐẶNG HỮU TÚ}}\\[0.2cm]
+\hspace{1.5 cm} \textbf{ Lớp\hspace{3.8cm}:\hspace{0.2cm}{ KSTN TOÁN TIN - K60}}\\
+\end{flushleft}
+
+\vspace{1.0cm}
+\begin{center}
+\textbf{{\large HÀ NỘI - 2019}}\\
+\end{center}
+
+\tableofcontents
+
+\newpage
+\chapter*{Mở đầu}
+aa
+
+\newpage
+\chapter{Mô hình nhận diện khuôn mặt }
+\section{Detect face}
+aaa
+\subsection{CNN}
+aa
+\subsection{MT-CNN}
+aa
+
+\section{Recognize face}
+aa
+\chapter{Kết quả}
+aa
+\newpage
+\chapter{Kết luận}
+aaa
+
+\newpage
+\begin{thebibliography}{12}
+	\addcontentsline{toc}{chapter}{\quad\  \bf Tài liệu tham khảo}
+	\bibitem{1}On Certain Formal Properties of Grammars\\
+	\textit{Noam Chomsky. In Information and Control 2, page 137 - 167, 1959.}
+	\bibitem{2} Otomat và ngôn ngữ hình thức\\
+	\textit{Đoàn Văn Ban, Bộ môn Khoa học máy tính, Khoa Công nghệ thông tin, Đại học Thái Nguyên.}
+	\bibitem{3}Introduction to the Theory of Computation\\
+	\textit{Michael Sipser. Cengage Learning, Boston, third edtion, 2013.
+	}
+	\bibitem{4}A Second Course in Formal Language\\
+	\textit{Jeffrey Shallit. Cambridge University Press, 2009.}
+	
+	
+	
+\end{thebibliography}
+
+\end{document}

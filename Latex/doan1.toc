@@ -1,0 +1,8 @@
+\contentsline {chapter}{\numberline {1}M\IeC {\^o} h\IeC {\`\i }nh nh\IeC {\d \acircumflex }n di\IeC {\d \ecircumflex }n khu\IeC {\^o}n m\IeC {\d \abreve }t }{4}
+\contentsline {section}{\numberline {1.1}Detect face}{4}
+\contentsline {subsection}{\numberline {1.1.1}CNN}{4}
+\contentsline {subsection}{\numberline {1.1.2}MT-CNN}{4}
+\contentsline {section}{\numberline {1.2}Recognize face}{4}
+\contentsline {chapter}{\numberline {2}K\IeC {\'\ecircumflex }t qu\IeC {\h a}}{5}
+\contentsline {chapter}{\numberline {3}K\IeC {\'\ecircumflex }t lu\IeC {\d \acircumflex }n}{6}
+\contentsline {chapter}{\hskip 1em\relax \ \bf T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{7}
