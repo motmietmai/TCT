@@ -191,6 +191,26 @@ O-Net lấy các bounding boxes từ R-Net làm đầu vào và đánh dấu cá
 Đầu vào của recognize là ma trận ảnh khuôn mặt được lấy từ phần nhận diện khuôn mặt. Ma trận ảnh này sẽ qua mô hình mạng \textbf{Inception ResNet v1} để được một vector đặc trưng với số chiều cố định. Sau đó, ta so khớp vector này với các vector đặc trưng đã được ghi sẵn trong cơ sở dữ liệu để cho ra kết quả.
 
 \subsection{Inception Resnet v1}
+\textbf{Inception Resnet v1} là mô hình mạng CNN phát triển. Đặc trưng của mô hình là phát triển theo chiều rộng. Tức là ở những tầng đặc biệt, ta sẽ dùng nhiều \textbf{filter} để kết hợp lại.
+
+\begin{center}
+\includegraphics[scale=0.5]{Image/Inception_basic_1}
+
+\bigskip
+
+\includegraphics[scale=0.5]{Image/Inception_basic_2}
+\end{center}
+
+\newpage
+\textit{VD:}
+\begin{center}
+\includegraphics[scale=0.65]{Image/Inception_basic_example}
+
+\includegraphics[scale=0.65]{Image/Inception_basic_example_1}
+\end{center}
+
+\subsubsection{Kiến trúc Inception Resnet v1}
+
 
 
 
