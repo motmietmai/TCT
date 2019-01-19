@@ -102,17 +102,99 @@ aa
 
 \newpage
 \chapter{Mô hình nhận diện khuôn mặt }
+Mô hình nhận diện khuôn mặt được chia làm hai bước:
+
+$\quad \bullet$ \textbf{Detect face}: nhận diện khu vực khuôn mặt có trong ảnh. Mô hình nhận diện được dùng ở đây là \textbf{MT-CNN}
+
+$\quad \bullet$ \textbf{Recognize face}: lấy đầu vào là khuôn mặt được nhận diện trong ảnh từ kết quả của phần detect face. Sau đó, cho kết quả này qua một mô hình CNN để lấy ra đặc trưng khuôn mặt. Đặc trưng này sẽ được so khớp với các đặc trưng của đối tượng muốn so khớp được lưu sẵn trong cơ sở dữ liệu. Từ đó, cho ra kết quả ảnh đầu vào chứa đối tượng nào. Mô hình để trích rút đặc trưng khuôn mặt ở đây là \textbf{Inception ResNet V1}
+
 \section{Detect face}
-aaa
+
 \subsection{CNN}
-aa
+Mạng CNN là mô hình được sử dụng phổ biến trong nhận diện đối tượng. Điểm nổi bật của mô hình này so với mô hình mạng neural thông thường là có thể trích rút ra đặc trưng chính của đối tượng trong quá trình training. 
+
+Công việc trích rút đặc trưng chính được liên quan trực tiếp đến hai phần là \textbf{convolution} và \textbf{pooling}.
+
+\subsubsection{Convolution}
+Ở pha \textbf{convolution}, các tầng ẩn được gọi là \textbf{convolution layer}. Các \textbf{convolution layer} này là tập các \textbf{feature map} và mỗi feature map chính là đầu ra của tầng trước và là đầu vào của tầng sau trong mô hình. 
+
+Để có feature map, ta cần có \textbf{convolution layer}. Ở đây, \textbf{convolution layer} (gọi tắt là \textbf{filter}) là một ma trận sẽ quét lần lượt qua ma trận dữ liệu đầu vào (từ trái qua phải, từ trên xuống dưới) và nhân tương ứng từng giá trị của ma trận đầu vào với giá trị trọng \textbf{filter}, đưa qua hàm kích hoạt (tanh, relu, elu, ...). Kết quả của quá trình này chính là \textbf{feature map}.\\
+
+\textbf{Input} và \textbf{Filter}
+\begin{center}
+\includegraphics[scale=0.5]{Image/Convolution_input}
+\end{center}
+
+\bigskip
+
+\textbf{Kết quả}
+\begin{center}
+\includegraphics[scale=0.6]{Image/Convolution_res}
+\end{center}
+
+\subsubsection{Pooling}
+Mục đích của \textbf{pooling} là làm giảm số chiều của ma trận, từ đó giảm thời gian tính toán và còn tránh được overfit.
+
+Kiểu \textbf{pooling} được sử dụng phổ biến nhất là \textbf{max pooling} với từng ô $2*2$
+
+\begin{center}
+\includegraphics[scale=2]{Image/MaxpoolSample2}
+\end{center}
+
+
 \subsection{MT-CNN}
-aa
+\textbf{MT-CNN} là mô hình mạng \textbf{neural} phát triển từ \textbf{CNN}. Mô hình này hoạt động rất mạnh trong việc nhận diện khuôn mặt. Đặc trưng của nó là dùng tăng độ chính xác cho việc nhận diện mặt bằng cách nhận diện thêm năm điểm đặc trưng trên khuôn mặt bao gồm: hai mắt, mũi và hai khóe miệng.
+
+Kiến trúc của mạng \textbf{MT-CNN} là dùng lần lượt ba mô hình P-net, O-net, R-net.
+
+\begin{center}
+\includegraphics[scale=0.4]{Image/MTCNN_architecture}
+\end{center}
+
+\newpage
+\subsubsection{P-net}
+Tại P-Net, thuật toán sử dụng 1 kernel 12x12 chạy qua mỗi bức hình để tìm kiếm khuôn mặt.
+
+\begin{center}
+\includegraphics[scale=0.5]{Image/MTCNN_P_net}
+\end{center}
+
+Sau lớp convolution thứ 3, mạng chia thành 2 lớp. Convolution 4-1 đưa ra xác suất của một khuôn mặt nằm trong mỗi bounding boxes, và Convolution 4-2 cung cấp tọa độ của các bounding boxes. Đến đây, ta đã có cơ bản các \textbf{bounding box} có xác suất cao là chứa khuôn mặt.
+
+\newpage
+\subsubsection{R-net}
+R-Net có cấu trúc tương tự với P-Net. Tuy nhiên sử dụng nhiều layer hơn. Tại đây, network sẽ sử dụng các bounding boxes đc cung cấp từ P-Net và tinh chỉnh là tọa độ.
+
+\begin{center}
+\includegraphics[scale=0.5]{Image/MTCNN_R_net}
+\end{center}
+
+Tương tự R-Net chia ra làm 2 layers ở bước cuối,cung cấp 2 đầu ra đó là tọa độ mới của các bounding boxes, cùng độ tin tưởng của nó.
+
+\newpage
+\subsubsection{O-net}
+O-Net lấy các bounding boxes từ R-Net làm đầu vào và đánh dấu các tọa độ của các mốc trên khuôn mặt.
+
+\begin{center}
+\includegraphics[scale=0.5]{Image/MTCNN_O_net}
+\end{center}
+
+\newpage
+
+Ở bước này, thuật toán đưa ra 3 kết quả đầu ra khác nhau bao gồm: xác suất của khuôn mặt nằm trong bounding box, tọa độ của bounding box và tọa độ của các mốc trên khuôn mặt (vị trí mắt, mũi, miệng).
+
+\begin{center}
+\includegraphics[scale=0.5]{Image/MTCNN_O_net_last}
+\end{center}
 
 \section{Recognize face}
-aa
+Đầu vào của recognize là ma trận ảnh khuôn mặt được lấy từ phần nhận diện khuôn mặt. Ma trận ảnh này sẽ qua mô hình mạng \textbf{Inception ResNet v1} để được một vector đặc trưng với số chiều cố định. Sau đó, ta so khớp vector này với các vector đặc trưng đã được ghi sẵn trong cơ sở dữ liệu để cho ra kết quả.
+
+\subsection{Inception Resnet v1}
+
+
+
 \chapter{Kết quả}
-aa
 \newpage
 \chapter{Kết luận}
 aaa
